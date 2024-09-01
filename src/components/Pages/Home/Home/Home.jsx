@@ -1,5 +1,6 @@
 import Banner from "../Banner/Banner";
 import BannerBottom from "../BannerBottom/BannerBottom";
+import PopulerProducts from "../PopulerProducts/PopulerProducts";
 
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
         <div className="container mx-auto">
             <Banner></Banner>
             <BannerBottom></BannerBottom>
+            <PopulerProducts></PopulerProducts>
         </div>
     );
 };
