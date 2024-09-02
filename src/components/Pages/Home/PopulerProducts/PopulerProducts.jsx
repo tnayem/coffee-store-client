@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const PopulerProducts = () => {
     return (
@@ -5,7 +6,7 @@ const PopulerProducts = () => {
             <p className="text-center font-semibold"><small>--- Sip & Savor ---</small></p>
             <h3 className="text-3xl font-bold text-center">Our Popular Products</h3>
             <div className="text-center ">
-                <button className="btn btn-xs bg-orange-300 rounded-none">Add Coffee</button>
+                <Link to='/addCoffee' className="btn btn-xs bg-orange-300 rounded-none">Add Coffee</Link>
             </div>
             
         </div>
