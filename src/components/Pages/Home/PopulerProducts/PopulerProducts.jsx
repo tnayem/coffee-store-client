@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import CoffeeCard from "../CoffeeCard/CoffeeCard";
+import { useEffect, useState } from "react";
 
-const PopulerProducts = ({ coffees }) => {
+const PopulerProducts = () => {
+    const [coffees,setCoffees] = useState([])
+    useEffect(()=>{
+        fetch('http://localhost:4000/coffee')
+        .then(res=>res.json())
+        .then(data=>setCoffees(data))
+    },[coffees])
     return (
         <div className="container mx-auto py-10">
             <p className="text-center font-semibold"><small>--- Sip & Savor ---</small></p>
