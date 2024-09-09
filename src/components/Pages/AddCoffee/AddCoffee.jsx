@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2'
 import './AddCoffee.css'
 const AddCoffee = () => {
-    const addCoffee=(e)=>{
+    const addCoffee = (e) => {
         e.preventDefault()
-        const form =e.target
-        const coffeeName = form.coffeeName.value 
-        const chefName = form.chefName.value 
-        const coffeeSupplier = form.coffeeSupplier.value 
-        const coffeeTaste = form.coffeeTaste.value 
-        const coffeeCategory = form.coffeeCategory.value 
-        const coffeeDetails = form.coffeeDetails.value 
-        const photoURL = form.photoURL.value 
+        const form = e.target
+        const coffeeName = form.coffeeName.value
+        const chefName = form.chefName.value
+        const coffeeSupplier = form.coffeeSupplier.value
+        const coffeeTaste = form.coffeeTaste.value
+        const coffeeCategory = form.coffeeCategory.value
+        const coffeeDetails = form.coffeeDetails.value
+        const photoURL = form.photoURL.value
         const newCoffee = {
             coffeeName,
             chefName,
@@ -21,12 +22,26 @@ const AddCoffee = () => {
             photoURL
 
         }
-        console.log(newCoffee);
-
-
-
-
-
+        fetch('http://localhost:4000/coffee', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(newCoffee)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'Coffee added successfull',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                }
+            })
+        form.reset()
 
     }
     return (
